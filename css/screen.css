@@ -2,14 +2,99 @@
 #FONTS
 \*------------------------------------*/
 
+@font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter-Reqular.woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter-SemiBold.woff2');
+    font-weight: 6000;
+}
+
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
 :root {
+    /* calcs */
+    --global-baseline: 8px;
+    --global-whitespace: calc(var(--global-baseline) * 3);
+    --global-whitespace-xl: calc(var(--global-whitespace) * 2);
+    --global-whitespace-md: calc(var(--global-baseline) * 2);
+    --global-whitespace-sm: var(--global-baseline);
+    --global-whitespace-xs: calc(var(--global-baseline) * 0.5);
 
+    --global-font-size: calc(var(--global-baseline) * 2);
+    --global-line-height: calc(var(--global-baseline) * 2);
+
+
+    --global-border-width: 1px;
+    --global-padding-top-btm: calc(var(--global-border-width) + 10px);
+
+
+    /* Colors */
+    --global-color-black: #20223A;
+    --global-color-white: #FFFFFF;
+    --global-color-primary: #3385FF;
+    --global-color-primary-dark: #2E77E6;
+    --global-color-primary-light: #4F95FF;
+    --global-color-primary-x-dark: #1B4186;
+    --global-color-primary-alpha-dark: #3385FFBF;
+    --global-color-primary-alpha-light: #3385FF40;
+
+    --global-color-neutral-light: #A0A1AD;
+    --global-color-neutral-x-light: #B5B6C0;
+    --global-color-neutral-xx-light: #CACCD4;
+    --global-color-neutral-xxx-light: #E2E3E7;
+    --global-color-neutral-xxxx-light: #F5F6FA;
+
+    --global-color-neutral: #8B8C9A;
+
+    --global-color-neutral-dark: #757787;
+    --global-color-neutral-x-dark: #606274;
+    --global-color-neutral-xx-dark: #4B4C60;
+    --global-color-neutral-xxx-dark: #35374D;
+    --global-color-neutral-xxxx-dark: #2A2C43;
+    
+    --global-color-danger: #FF3333;
+    --global-color-danger-alpha: #FF3333;
+
+
+    /* Element colors */
+    --global-color-text: var(--global-color-black);
+    --global-color-label: var(--global-color-neutral-xx-dark);
+    --global-color-title: var(--global-color-black);
+    --global-color-bg: var(--global-color-neutral-xxxx-light);
+    --global-color-bg-lighter: var(--global-color-white);
+    --global-color-link: var(--global-color-primary);
+    
+    --global-color-button-text: var(--global-color-white);
+    --global-color-button-bg: var(--global-color-primary);
+    --global-color-button-border: var(--global-color-primary-dark);
+    --global-color-button-bg-hover: var(--global-color-primary-light);
+    --global-color-button-bg-pressed: var(--global-color-primary-dark);
+    --global-color-button-shadow: var(--global-color-primary-alpha-light);
+    --global-color-button-bg-active: var(--global-color-primary);
+
+    --global-color-input-bg: var(--global-color-white);
+    --global-color-input-text: var(--global-color-neutral-x-light);
+    --global-color-input-border: var(--global-color-neutral-xxx-light);
+    --global-color-input-border-focused: var(--global-color-primary-alpha-dark);
+
+    --global-border-input-focused: 3px solid var(--global-color-input-border-focused);
+    --global-placeholder-color: var(--global-color-neutral-x-light);
+
+    --global-checkbox-border-color: var(--global-color-neutral-xxx-light);
+    --global-checkbox-border-color-hovered: var(--global-color-neutral-xx-light);
+    --global-checkbox-border-color-focus: var(--global-color-primary);
+    --global-checkbox-check-color: var(--global-color-primary);
+    --global-checkbox-check-bg: var(--global-color-white);
+
+    --global-color-seperator: var(--global-color-neutral-xxxx-light);
 }
-
 /* CSS variables here */
 
 /*------------------------------------*\
@@ -23,14 +108,14 @@
 */
 
 html {
-    font-size: 16px;
+    font-size: var(--global-font-size);
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    font-family: 'Inter', arial, sans-serif;
+    color: var(--global-text-color);
+    background-color: var(--global-color-bg);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
 }
 
 *,
@@ -47,13 +132,13 @@ html {
 */
 
 ::-moz-selection {
-    background: HotPink;
+    background: var(--global-color-bg-selection);
     color: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: HotPink;
+    background: var(--global-color-bg-selection);
     color: white;
     text-shadow: none;
 }
@@ -87,20 +172,20 @@ h3 {
 
 h1 {
     font-size: 36px;
-    line-height: 48px;
-    margin: 0 0 24px;
+    line-height: var(--global-whitespace-xl);
+    margin: 0 0 var(--global-whitespace);
 }
 
 h2 {
     font-size: 32px;
     line-height: 40px;
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace);
 }
 
 h3 {
     font-size: 26px;
     line-height: 32px;
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace);
 }
 
 h4,
@@ -108,7 +193,7 @@ h5,
 h6 {
     font-size: 20px;
     line-height: 24px;
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace);
 }
 
 p,
@@ -118,12 +203,12 @@ dl,
 table,
 address,
 figure {
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace);
 }
 
 ul,
 ol {
-    padding-left: 24px;
+    padding-left: var(--global-whitespace);
 }
 
 li ul,
@@ -135,7 +220,7 @@ blockquote {
     font-style: normal;
     font-size: 23px;
     line-height: 32px;
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace);
 }
 
 blockquote * {
@@ -146,30 +231,33 @@ blockquote * {
 figcaption {
     font-weight: 400;
     font-size: 12px;
-    line-height: 16px;
-    margin-top: 8px;
+    line-height: var(--global-line-height);
+    margin-top: var(--global-whitespace-sm);
 }
 
 hr {
     border: 0;
     height: 1px;
     background: LightGrey;
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace);
 }
 
 a {
-    color: HotPink;
+    color: var(--global-color-link);
     transition: all .1s ease-in-out;
+    text-decoration: none;
 }
 
 a:visited,
 a:active {
-    color: HotPink;
+    color: var(--global-color-link);
+    text-decoration: underline;
 }
 
 a:hover,
 a:focus {
-    color: DeepPink;
+    color: var(--global-color-link);
+    text-decoration: underline;
 }
 
 /*------------------------------------*\
@@ -184,29 +272,36 @@ a:focus {
 
 .o-row {
     position: relative;
-    padding: 24px 24px 0;
+    padding: var(--global-whitespace) var(--global-whitespace) 0;
 }
 
 .o-row--login {
     /* stuff here to align the card */
+
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* size modifiers */
 
 .o-row--lg {
-    padding-top: 48px;
-    padding-bottom: 24px;
+    padding-top: var(--global-whitespace-xl);
+    padding-bottom: var(--global-whitespace);
 }
 
 .o-row--xl {
     padding-top: 72px;
-    padding-bottom: 48px;
+    padding-bottom: var(--global-whitespace-xl);
 }
 
 @media (min-width: 768px) {
     .o-row {
-        padding-left: 48px;
-        padding-right: 48px;
+        padding-left: var(--global-whitespace-xl);
+        padding-right: var(--global-whitespace-xl);
     }
 }
 
@@ -241,13 +336,13 @@ a:focus {
 }
 
 .o-section + .o-section {
-    padding-top: 24px;
+    padding-top: var(--global-whitespace);
 }
 
 @media (min-width: 768px) {
     .o-section--lg + .o-section--lg,
     .o-section--xl + .o-section--xl {
-        padding-top: 48px;
+        padding-top: var(--global-whitespace-xl);
     }
 }
 
@@ -299,7 +394,7 @@ a:focus {
 }
 
 .o-layout--gutter-lg > .o-layout__item {
-    padding: 0 24px;
+    padding: 0 var(--global-whitespace);
 }
 
 .o-layout--gutter-xl {
@@ -307,7 +402,7 @@ a:focus {
 }
 
 .o-layout--gutter-xl > .o-layout__item {
-    padding: 0 48px;
+    padding: 0 var(--global-whitespace-xl);
 }
 
 /* reverse horizontal row modifier */
@@ -420,6 +515,8 @@ a:focus {
 
     /* Corrects inability to style clickable `input` types in iOS */
     -webkit-appearance: none;
+
+    outline: none;
 }
 
 /*------------------------------------*\
@@ -432,11 +529,66 @@ a:focus {
     Website main logo
 */
 
+.c-logo {
+    height: var(--global-whitespace);
+    display: flex;
+    justify-content: center;
+}
+
+.c-logo__symbol {
+    height: 100%;
+    display: block;
+}
+
+.c-logo__symbol .c-logo__path--1 {
+    fill: var(--global-color-text);
+}
+
+.c-logo__symbol .c-logo__path--2 {
+    fill: var(--global-color-link);
+}
+
+.c-logo__symbol .c-logo__path--3 {
+    fill: #1B4186;
+}
+
 /*
     Component: Card
     ---
     Card with box shadow
 */
+
+.c-card {
+    background-color: var(--global-color-bg-lighter);
+    border-radius: 3px;
+    box-shadow: 0 2px var(--global-whitespace-xs) rgba(0, 0, 0, 0.07);
+}
+
+.c-card__body {
+    padding: var(--global-whitespace-xl) var(--global-whitespace-xl) var(--global-whitespace);
+}
+
+.c-card__title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: var(--global-color-title);
+
+    padding: var(--global-whitespace-xl) 0 0;
+    margin-bottom: 0;
+}
+
+.c-card__footer {
+    padding: var(--global-whitespace) var(--global-whitespace-xl);
+    text-align: center;
+    border-top: 1px solid var(--global-color-seperator);
+}
+
+.c-card__footer p {
+    margin: 0;
+}
 
 /*
     Component: Forms
@@ -451,10 +603,90 @@ a:focus {
 */
 
 .c-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
+    width: 100%;
+
+    border: var(--global-border-width) solid var(--global-color-input-border);
+    border-radius: 3px;
+    
+    font-family: inherit;
+    font-weight: 400;
+    font-size: var(--global-font-size);
+    line-height: 19px;
+
+    padding: var(--global-padding-top-btm);
+    outline: none;
+
+    color: var(--global-color-neutral-x-light);
+    background-color: var(--global-color-input-bg);
 }
 
 .c-input:focus {
+    border-color: var(--global-color-primary-light);
+    box-shadow: 0 0 0 3px var(--global-color-primary-alpha-light);
+}
+
+input[type="checkbox"] {
+    visibility: hidden;
+}
+
+input[type="checkbox"] + label:before {
+    border: 1px solid var(--global-checkbox-border-color);
+    background-color: var(--global-checkbox-check-bg);
+    
+    border-radius: 3px;
+    content: "\00a0";
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin: 0 .25em 0 0;
+    padding: 0;
+
+    font-size: var(--global-font-size);
+    line-height: calc(var(--global-font-size) * 0.8);
+
+    vertical-align: top;
+}
+
+input[type="checkbox"]:checked + label:before {
+    background: var(--global-checkbox-check-bg);
+    color: var(--global-checkbox-check-color);
+    content: "\2713";
+    text-align: center;
+}
+
+input[type="checkbox"]:checked + label:after {
+    font-weight: bold;
+}
+  
+input[type="checkbox"]:focus + label::before {
+    box-shadow: 0 0 0 3px var(--global-color-primary-alpha-light);
+    border-color: var(--global-checkbox-border-color-focus);
+}
+
+input[type="checkbox"]:hover + label::before {
+    border-color: var(--global-checkbox-border-color-hovered);
+}
+
+.c-form-field--row {
+    display: flex;
+    align-items: center;
+}
+
+/* Placeholder colors */
+.c-input::placeholder {
+    color: var(--global-placeholder-color);
+}
+
+.c-input::-webkit-input-placeholder { /* Edge */
+    color: var(--global-placeholder-color);
+}
+  
+.c-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--global-placeholder-color);
 }
 
 /*
@@ -463,8 +695,19 @@ a:focus {
     Class to put on all form labels
 */
 
-.c-label {
+label {
+    display: block;
+}
 
+.c-label {
+    font-size: 14px;
+    line-height: var(--global-line-height);
+    margin-bottom: var(--global-whitespace-sm);
+    color: var(--global-color-label);
+}
+
+.c-form-field--row label {
+    margin: 0 0 0 var(--global-whitespace-sm);
 }
 
 /* If a input is focused within the form-field class change te color of the label */
@@ -480,19 +723,36 @@ a:focus {
 */
 
 .c-button {
+    padding: 12px var(--global-whitespace);
+    
+    border-radius: 3px;
+    border: var(--global-border-width) solid var(--global-color-button-border);
 
+    background-color: var(--global-color-button-bg);
+    color: var(--global-color-button-text);
+
+    font-size: var(--global-font-size);
+    line-height: 19px;
+    font-weight: 600;
+
+    width: 100%;
+    outline: none;
+
+    cursor: pointer;
 }
 
 .c-button:hover {
-
+    background-color: var(--global-color-button-bg-hover);
 }
 
 .c-button:focus {
-
+    border-color: var(--global-color-button-bg-pressed);
+    box-shadow: 0 0 0 3px var(--global-color-button-shadow);
+    box-shadow: h-offset v-offset blur spread color;
 }
 
 .c-button:active {
-
+    background-color: var(--global-color-button-bg-pressed);
 }
 
 .c-button--block {
@@ -510,7 +770,7 @@ a:focus {
 */
 
 .u-color-neutral-base {
-    color: Silver;
+    color: var(--global-color-neutral-x-light);
 }
 
 .u-color-neutral-dark {
@@ -532,15 +792,15 @@ a:focus {
 }
 
 .u-mb-xs {
-    margin-bottom: 4px !important;
+    margin-bottom: var(--global-whitespace-xs) !important;
 }
 
 .u-mb-sm {
-    margin-bottom: 8px !important;
+    margin-bottom: var(--global-whitespace-sm) !important;
 }
 
 .u-mb-md {
-    margin-bottom: 16px !important;
+    margin-bottom: var(--global-whitespace-md) !important;
 }
 
 .u-mb-lg {
@@ -548,7 +808,7 @@ a:focus {
 }
 
 .u-mb-xl {
-    margin-bottom: 48px !important;
+    margin-bottom: var(--global-whitespace-xl) !important;
 }
 
 /*
@@ -873,7 +1133,7 @@ No media query since this is the default in mobile first design
     }
     pre,
     blockquote {
-        border: 1px solid #999;
+        border: var(--global-border-width) solid var(--global-color-neutral-ligh);
         page-break-inside: avoid;
     }
     /*
@@ -896,5 +1156,33 @@ No media query since this is the default in mobile first design
     h2,
     h3 {
         page-break-after: avoid;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --global-color-text: var(--global-color-neutral-xxxx-light);
+        --global-color-bg: var(--global-color-neutral-xxxx-dark);
+        --global-color-bg-lighter: var(--global-color-neutral-xxx-dark);
+        --global-color-label: var(--global-color-neutral-xx-light);
+        --global-color-title: var(--global-color-white);
+
+        --global-color-input-bg: var(--global-color-black);
+        --global-color-input-text: var(--global-color-neutral-x-dark);
+        --global-color-input-border: var(--global-color-black);
+
+        --global-placeholder-color: var(--global-color-neutral-dark);
+
+        --global-checkbox-border-color: var(--global-color-black);
+        --global-checkbox-border-color-hovered: var(--global-color-neutral-xx-dark);
+        --global-checkbox-border-color-focus: var(--global-color-neutral-xx-dark);
+        --global-checkbox-check-color: var(--global-color-neutral-xxx-light);
+        --global-checkbox-check-bg: var(--global-color-black);
+
+        --global-color-seperator: var(--global-color-black);
+    }
+
+    .c-logo__symbol path {
+        fill: var(--global-color-white) !important;
     }
 }
